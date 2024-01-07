@@ -1,3 +1,21 @@
+# TODO: Add these notes in a tidy way 
+- used nitro proxy server to avoid cors probelms.
+- Download svg files from figma and optimzed them using Figma's 'Simplify' feature and used SVGO SVGOMG
+- Optimized asset sizes
+- Jakarta font downloaded from GFonts and added through tailwind config. 
+- Use of pinia for loading product grid.
+- fovorites will be saved in the local storage.
+
+## TO DO NEXT: 
+-Popular cars ProductList.
+-Product detail Page.
+-Favorites Functionality.
+-Search
+-Styling.
+-Responsive.
+
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -73,3 +91,7 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+
+
