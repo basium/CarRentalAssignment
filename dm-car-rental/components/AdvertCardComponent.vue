@@ -7,6 +7,7 @@
     </div>
 </template>
 <script>
+/* To do change the Car rental link to a functioning one */
     export default {
         props : {
             isEven:{

@@ -13,13 +13,14 @@
         </div>
         <div class="flex flex-row flex-auto">
             <div>{{price}}/<span>day</span></div>
-            <a href="" class="rounded p3 ml-3 w-32 h-11 bg-blue-2 text-white text-center p-2"> Rent Now </a>
+            <a :href="`/products/${id}`" class="rounded p3 ml-3 w-32 h-11 bg-blue-2 text-white text-center p-2"> Rent Now </a>
         </div>
     </div>
 </template>
 <script>
     export default{
         props : {
+            id:{default:''},
             heading : { default : '' },
             subHeading: { default: '' },
             attribute1: { default:''},

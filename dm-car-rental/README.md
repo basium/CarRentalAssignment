@@ -13,6 +13,7 @@
 -Search
 -Styling.
 -Responsive.
+-Use Nuxt image component on images to make them faster. Use the nuxt/image component and set format="webp".
 
 
 

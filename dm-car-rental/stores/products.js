@@ -13,12 +13,12 @@ export const useProductStore = defineStore('products',{
                 lastPage:0,
                 pageSize:0, 
                 currentFilter:"",
-                currentRecord:{},
                 errorState : false,
                 errorMessage : ""
             }
         },
         actions:{
+            
             fetchFirst : async function () {
                 let endpoint ="/api/cars",
                     firstResult = [];

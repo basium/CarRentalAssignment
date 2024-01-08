@@ -5,6 +5,7 @@ export const convertToClientModels = function ( products ) {
     let clientModels =[]
     products.forEach( function( product ) {
         clientModels.push({
+            id:product.id,
             heading: product.name, 
             subHeading: product.type, 
             attribute1:'g',
@@ -18,5 +19,32 @@ export const convertToClientModels = function ( products ) {
         })
     });
     return clientModels;
+}
+export const convertToClientModel = function (product) {
+    if(!product){
+        return {}
+    }
+    let allImages = [];
 
+    product.images.forEach(function (img){
+        allImages.push(img.url);
+    });
+
+    if(product?.img){
+        allImages.unshift(product.img);
+    }
+    const clientModel = {
+        id: product.id,
+        heading : product.name,
+        description: product.description,
+        price: product.pricePerDay,
+        images: allImages,
+        type: product.type,
+        people: product.people,
+        gas: product.gasolineLiter,
+        steering: product.kindOfTransition
+
+    };
+    return clientModel;
+    
 }

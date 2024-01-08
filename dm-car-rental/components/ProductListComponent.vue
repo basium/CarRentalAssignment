@@ -1,8 +1,7 @@
 <template>
-    
     <section class="grid" :style="columnTemplates">
-    
         <ProductCardComponet v-if="products.value.length>0 && !hasError" v-for="(product,index) in products.value"
+            :id="product.id"
             :heading="product.heading"
             :subHeading="product.subHeading"
             :attribute1 = product.attribute1
@@ -24,6 +23,9 @@
     export default {
     props: {
         columnCount: { default: 1 }
+        //filter
+        //pagingOn
+        //entityVariant 'popular'
     },
     setup: async function () {
         const store = useProductStore(),
