@@ -1,11 +1,9 @@
 <template>
     <section product-detail-view class="flex flex-col">
-        <SingleProductComponent :id="productId"/>
+        <ConntectedSingleProductComponent :id="productId"/>
         <section class="flex flex-col flex-fixed">
-                <div class="flex flex-row flex-auto"> <span>Popular Car </span> <span> <a> View All </a></span></div>
-                <ProductListComponent
-                    :columnCount = "3"
-                    
+                <ConnectedProductListComponent
+                    :columnCount = "4"
                 />
         </section>
     </section>

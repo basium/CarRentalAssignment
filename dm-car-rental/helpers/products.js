@@ -4,16 +4,14 @@ export const convertToClientModels = function ( products ) {
     }
     let clientModels =[]
     products.forEach( function( product ) {
+        
         clientModels.push({
             id:product.id,
             heading: product.name, 
             subHeading: product.type, 
-            attribute1:'g',
-            attribute2:'t',
-            attribute3:'c',
-            attribute1Value:product.gasolineLiter,
-            attribute2Value:product.kindOfTransition,
-            attribute3Value:product.people,
+            gas:product.gasolineLiter,
+            transmission:product.kindOfTransition==="Automatic"?'Auto':product.kindOfTransition,
+            people:product.people,
             price: product.pricePerDay,
             imageURL: product.img
         })

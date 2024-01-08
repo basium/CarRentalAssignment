@@ -1,5 +1,5 @@
 <template>
-    <div card-content :class="[isEven?'bg-blue-2':' bg-blue-1']" class="flex flex-col relative w-advert h-advert p-4 rounded-xl sm:w-advert-s sm:h-advert-s ml-16 mt-16 mb-16">
+    <div card-content :class="[isEven?'bg-blue-2':' bg-blue-1']" class="flex flex-col relative w-advert h-advert p-4 rounded-xl sm:w-advert-s sm:h-advert-s">
         <div class="text-white leading-12 text-3xl max-w-[272px] ml-3">{{ heading }}</div>
         <div class="text-white text-base leading-6 mt-3.5 ml-3 mb-6 max-w-[272px]"> {{ contentText }}</div>
         <a href="http://www.google.com" :class="[isEven?'bg-blue-1':'bg-blue-2']" class="rounded p3 ml-3 w-32 h-11 text-white text-center p-2"> {{buttonCaption }}</a>

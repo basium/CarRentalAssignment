@@ -1,59 +1,60 @@
 <template>
-    <section class="grid" :style="columnTemplates">
-        <ProductCardComponet v-if="products.value.length>0 && !hasError" v-for="(product,index) in products.value"
-            :id="product.id"
-            :heading="product.heading"
-            :subHeading="product.subHeading"
-            :attribute1 = product.attribute1
-            :attribute2 = product.attribute2
-            :attribute3 = product.attribute3
-            :attribute1Value = product.attribute1Value
-            :attribute2Value = product.attribute2Value
-            :attribute3Value = product.attribute3Value
-            :price = product.price
-            :imageURL= product.imageURL
-        /> 
-        <div v-if="hasError">{{ errorMessage || `An unknown error has occured with this widget.` }}</div>
+    <section class="flex justify-center">
+        <section product-card-grid class="grid" :style="columnTemplates" style="gap:calc(4vw + 10px)">  
+                <ProductCardComponet v-if="products.length>0" v-for="(product,index) in products"
+                    :id="product.id"
+                    :heading="product.heading"
+                    :subHeading="product.subHeading"
+                    :attribute1 = product.attribute1
+                    :attribute2 = product.attribute2
+                    :attribute3 = product.attribute3
+                    :gas = product.gas
+                    :transmission = product.transmission
+                    :people = product.people
+                    :price = product.price
+                    :imageURL= product.imageURL
+                    :isFavorite="favorites.indexOf(product.id)>-1"
+                    @favoriteChanged ="event_favoriteChanged"
+                /> 
+        </section>
     </section>
-    <input type="button" v-if="hasMorePages" class="rounded p3 ml-3 w-32 h-11 text-white text-center p-2 bg-blue-2" value='Load More' @click="event_moreItemsClicked"/>
-
 </template>
 <script>
-// To do , add favorites functionality (conntect to the favorites store). 
     export default {
-    props: {
-        columnCount: { default: 1 }
-        //filter
-        //pagingOn
-        //entityVariant 'popular'
-    },
-    setup: async function () {
-        const store = useProductStore(),
-        products = ref([]),
-        { data: data } = await useAsyncData('products', () => store.fetchFirst());
-        products.value = data;
-        return{store, products}
-    },
-    computed: { 
-        columnTemplates: function () {
-            return { 'grid-template-columns': `repeat(${this.columnCount}, minmax(0, 1fr));` };
+        props: {
+            columnCount: { default: 1 },
+            products : {default:[]}
         },
-        hasMorePages: function () {
-            return (this.store.currentPage < this.store.lastPage );
+        computed: { 
+            columnTemplates: function () {
+                return { 'grid-template-columns': `repeat(${this.columnCount}, minmax(0, 1fr))` };
+            },
+            favorites : function () {
+                const favoritestore = useFavoritesStore(),
+                favorites =  favoritestore.getFavorites;
+                let fIds = [];
+                favorites.forEach(function (f) {
+                    fIds.push(f.id);
+                })
+                return fIds;
+            }
         },
-        hasError:function () {
-            return this.store.errorState; 
-        },
-        errorMessage: function (){
-            return this.store.errorMessage
-        }
-    },
-    methods : {
-        event_moreItemsClicked : async function (event) {
-            const result = await this.store.nextPage();
-            this.products.value =[...this.products.value, ...result];
+        methods: {
+            event_favoriteChanged: function ( event ) {
+                const favoriteStore = useFavoritesStore();
+                if(event.isFavorite){
+                    let product = toRaw(this.products).find(function (p) {
+                        return p.id===event.id
+                    });
+                    favoriteStore.addFavorite(toRaw(product));
+                }
+                else {
+                    let product = toRaw(this.products).find(function (p) {
+                        return p.id===event.id
+                    });
+                    favoriteStore.removeFavorite(toRaw(product));
+                }
+            }     
         }
     }
-
-}
 </script>

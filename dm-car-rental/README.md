@@ -4,7 +4,7 @@
 - Optimized asset sizes
 - Jakarta font downloaded from GFonts and added through tailwind config. 
 - Use of pinia for loading product grid.
-- fovorites will be saved in the local storage.
+- fovorites will be saved in the local storage. This was done to save time but locked me to what I could use. Ideally this would have been server managed too. 
 
 ## TO DO NEXT: 
 -Popular cars ProductList.

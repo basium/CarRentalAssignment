@@ -8,9 +8,7 @@ export default {
     fontFamily:{
       dm: ['Plus Jakarta Sans']
     },
-    screens:{
-
-    },
+    screens:{},
     extend : {
       maxHeight: {
         'limit':'2505px'
@@ -25,11 +23,22 @@ export default {
       },
       backgroundColor:{
         'blue-1' : '#54A6FF',
-        'blue-2' : '#3563E9'
+        'blue-2' : '#3563E9',
+        'white-1': '#FFFFFF',
+        'white-2': '#F6F7F9'
       },
       lineHeight: {
          '12' : '3rem'
+      },
+      spacing : {
+         '0.25' :"1.5rem"
+      },
+      colors:{
+          'secondary-500':"#1A202C",
+          'secondary-300':"#90A3BF"
       }
+
+    
 
     }
   }

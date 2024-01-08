@@ -1,5 +1,5 @@
 <template>
-    <section class="flex flex-auto flex-row justify-center">
+    <section class="flex flex-auto flex-row justify-around" style="padding:60px;">
             <AdvertCardComponent v-for="(advert, index) in advertList" 
             :isEven="index % 2 == 0"
             :imageUrl = "advert.imageUrl"

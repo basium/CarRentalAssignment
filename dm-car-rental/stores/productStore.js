@@ -99,6 +99,12 @@ export const useProductStore = defineStore('products',{
                     this.errorMessage = `Something went wrong while getting products (Page ${this.currentPage}).`
                 }
 
+            },
+            setFilter:function(filter) {
+                this.currentFilter = filter
+            },
+            clearFilter: function () {
+                this.currentFilter = ''                
             }
         }
 });

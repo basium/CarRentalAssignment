@@ -10,7 +10,8 @@
         <div class="flex flex-col flex-auto">
             <div>
                 <div>{{product.heading}}</div>
-                <span>{{`<3`}}</span>
+                <span class="cursor-pointer" @click="event_unfavoriteClicked" v-if="isFavorite"><img src="/images/heart_full.svg"/></span>
+                <span class="cursor-pointer" @click="event_favoriteClicked" v-if="!isFavorite"><img src="/images/heart_empty.svg"/></span>
             </div>
             <div> Fake Rating </div>
             <div> {{product.description}} </div>
@@ -59,6 +60,12 @@ export default{
         {data:data} = await useFetch(`/api/cars/${props.id}`);
         product.value = convertToClientModel(data.value);
         return {product};
+    },
+    computed: {
+        isFavorite : function () {
+            const favoritestore = useFavoritesStore();
+            return favoritestore.isFavorite(this.product);
+        }
     },  
     mounted : function () {
         if( this.product.images.length > 0) {
@@ -72,6 +79,14 @@ export default{
             if(nextImageIndex > -1){
                 this.selectedImage = images[nextImageIndex];
             }
+        },
+        event_unfavoriteClicked : function (event) {
+            const favoriteStore = useFavoritesStore();
+            favoriteStore.removeFavorite(toRaw(this.product))
+        },
+        event_favoriteClicked: function (event) {
+            const favoriteStore = useFavoritesStore();
+            favoriteStore.addFavorite(toRaw(this.product));
         }
     }
 }
