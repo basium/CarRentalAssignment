@@ -1,6 +1,12 @@
 html,body,#__nuxt{
     display:flex; 
     flex: 1 1 auto;
-
+}
+.nakedInput{
+    border: none;          
+    outline: none;         
+    background: transparent; 
+    padding: 0;            
+    margin: 0;             
 }
 

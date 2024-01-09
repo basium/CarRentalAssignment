@@ -34,8 +34,10 @@ export default {
          '0.25' :"1.5rem"
       },
       colors:{
+          'primary-500': '#3563E9',
           'secondary-500':"#1A202C",
-          'secondary-300':"#90A3BF"
+          'secondary-300':"#90A3BF",
+          'secondary-400':"#596780"
       }
 
     

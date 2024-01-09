@@ -1,41 +1,47 @@
 <template>
-    <section class="flex flex-row">
+    <section class="flex flex-row mb-8">
         <div class="flex flex-col">
             <div clas="flex flex-fixed"></div>
-            <div clas="flex flex-fixed">
-                <img :src="selectedImage" style="width:100px; height:100px;"/>
-                <img v-for="(image,index) in product.images" :src="image" style="width:40px; height: 40px;" :image-index="index" @click="event_imageClick">
+            <div image-content clas="flex flex-fixed" style="margin-top:2rem">
+                <div card-selected-image class="flex flex-auto justify-center rounded-xl">
+                    <img class="flex flex-col flex-fixed w-[30.75rem] h-[22.5rem] justify-center" :src="selectedImage"/>
+                </div>
+                <div class="flex flex-row flex-fixed">
+                    <img class="flex flex-col flex-fixed w-[9.25rem] h-[7.75rem] ml-6 mr-6 mt-6 rounded-lg cursor-pointer" v-for="(image,index) in product.images" :src="image" :image-index="index" @click="event_imageClick">
+                </div>
             </div>
         </div>
-        <div class="flex flex-col flex-auto">
-            <div>
-                <div>{{product.heading}}</div>
+        <div card-text-content class="flex flex-col flex-auto w-[50rem] h-[32rem] bg-white rounded-lg p-6 pt-8 m-8 pb-11">
+            <div class="flex flex-row flex-fixed">
+                <div class="flex flex-fixed mr-3 h-[2.5rem] text-secondary-500 text-3xl leading-[3rem]">{{product.heading}}</div>
                 <span class="cursor-pointer" @click="event_unfavoriteClicked" v-if="isFavorite"><img src="/images/heart_full.svg"/></span>
                 <span class="cursor-pointer" @click="event_favoriteClicked" v-if="!isFavorite"><img src="/images/heart_empty.svg"/></span>
             </div>
-            <div> Fake Rating </div>
-            <div> {{product.description}} </div>
-            <div class="grid grid-cols-3"> 
-                <div>
-                    <span>Car Type</span>
-                    <span>{{product.type}}</span>
-                </div>
-                <div>
-                    <span>Capacity </span>
-                    <span>{{product.people}}</span>
-                </div>
-                <div>
-                    <span>Gasoline</span>
-                    <span>{{ product.gas }}</span>
-                </div>
-                <div>
-                    <span>Steering</span>
-                    <span>{{product.steering}}</span>
+            <div class="flex flex-fixed mt-2"><img src="/images/fakeReview.png"></div>
+            <div class="flex flex-row mb-8 mt-8 text-secondary-400 font-normal "> {{product.description}} </div>
+            <div class="flex">
+                <div class="grid grid-cols-3" style="gap:44px; row-gap:16px;"> 
+                    <div class="flex w-[11.4rem]">
+                        <span class="flex flex-auto w-[5.7rem] h-[1.75rem] tracking-tighter text-secondary-300">Car Type</span>
+                        <span class="flex flex-auto w-[5.7rem] tracking-tighter text-secondary-400 justify-end font-semibold">{{product.type}}</span>
+                    </div>
+                    <div class="flex flex-auto">
+                        <span class="flex flex-auto w-[5.7rem] h-[1.75rem] tracking-tighter text-secondary-300">Capacity </span>
+                        <span class="flex flex-auto w-[5.7rem] tracking-tighter text-secondary-400 justify-end font-semibold">{{product.people}} Person</span>
+                    </div>
+                    <div class="flex flex-auto">
+                        <span class="flex flex-auto w-[5.7rem] h-[1.75rem] tracking-tighter text-secondary-300">Gasoline</span>
+                        <span class="flex flex-auto w-[5.7rem] tracking-tighter text-secondary-400 justify-end font-semibold">{{ product.gas }}L</span>
+                    </div>
+                    <div class="flex flex-auto ">
+                        <span class="flex flex-auto w-[5.7rem] h-[1.75rem] tracking-tighter text-secondary-300">Steering</span>
+                        <span class="flex flex-auto w-[5.7rem] tracking-tighter text-secondary-400 justify-end font-semibold">{{product.steering}}</span>
+                    </div>
                 </div>
             </div>
-            <div class="flex flex-row flex-auto">
-                <div>{{product.price}} /<span>day</span></div>
-                <a class="rounded p3 ml-3 w-32 h-11 bg-blue-2 text-white text-center p-2"> Rent Now </a>
+            <div class="flex flex-row flex-auto justify-between">
+                <div class="flex flex-row "><span class="flex flex-auto flex-col justify-end text-2xl text-secondary-500 font-bold">${{product.price}}/</span><span class="flex flex-auto  flex-col justify-end text-base text-secondary-300">day</span></div>
+                <div class="flex flex-row items-end"><a class="flex flex-auto flex-col justify-end rounded p3 ml-3 w-32 h-11 bg-blue-2 text-white text-center p-2"> Rent Now </a></div>
             </div>
         </div>
     </section>

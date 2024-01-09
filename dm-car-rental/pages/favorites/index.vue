@@ -1,7 +1,9 @@
 <template>
-    <ProductListComponent
-    :columnCount="4"
-    :products="favorites"/>
+        <div class="flex flex-row justify-center flex-auto mt-8">
+            <ProductListComponent
+            :columnCount="4"
+            :products="favorites"/>
+        </div>
 </template>
 <script>
     import {useFavoritesStore} from '../../stores/favoriteStore';

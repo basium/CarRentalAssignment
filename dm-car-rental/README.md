@@ -5,15 +5,18 @@
 - Jakarta font downloaded from GFonts and added through tailwind config. 
 - Use of pinia for loading product grid.
 - fovorites will be saved in the local storage. This was done to save time but locked me to what I could use. Ideally this would have been server managed too. 
+- Docker can be used.
+- Did not have enough time to implement tests.
+- Did not use Type script, was unsure if it is requried for this job. 
+- Text colors could be done using opacity
+- Review was faked
+- Search text not sanitized
+- Images not optimized
+- Tests skipped due to lack of time.
 
 ## TO DO NEXT: 
--Popular cars ProductList.
--Product detail Page.
--Favorites Functionality.
--Search
--Styling.
 -Responsive.
--Use Nuxt image component on images to make them faster. Use the nuxt/image component and set format="webp".
+-
 
 
 

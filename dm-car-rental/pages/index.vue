@@ -1,14 +1,19 @@
 <template>
     <section home-view class="flex flex-col flex-auto">
         <AdvertListComponent :advertList = "advertsData"/>
-        <section class="flex flex-col flex-auto">
-            <div class="flex flex-row flex-auto"> <span>Popular Cars</span>
-                <ProductListComponent :columnCount="4" :products="popularCars"/>
-            </div>
-            <div class="flex flex-row flex-auto"> <span>Recomended Car </span> <span> <a> View All </a></span></div>
+        <section class="flex flex-col">
+                <div class="flex  flex-col jsutify-center ml-[13rem] items-center p-5 w-[8.2rem] h-11  text-secondary-300" style="margin-left:13rem; padding-left:1.25rem;">
+                    Popular Cars
+                </div>
+                <div class="flex justify-center">
+                    <ProductListComponent :columnCount="4" :products="popularCars"/>
+                </div>
+                <div class="flex  flex-col jsutify-center ml-[13rem] items-center p-5 w-[8.2rem] h-11  text-secondary-300" style="margin-left:13rem; margin-top:2rem; padding-left:1.25rem;">
+                    Recommended Cars
+                </div>
                 <ConnectedProductListComponent
                 :columnCount = "4"  
-            />                
+            />   
         </section>
     </section>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <section class="flex justify-center">
-        <section product-card-grid class="grid" :style="columnTemplates" style="gap:calc(4vw + 10px)" v-if="!hasError">  
-                <ProductCardComponet v-if="products.value.length>0" v-for="(product,index) in products.value"
+        <section product-card-grid class="grid" :style="columnTemplates" style="column-gap:calc(4vw + 10px); row-gap:2em" v-if="!hasError">  
+                <ProductCardComponet v-if="products.length>0" v-for="(product,index) in products"
                     :id="product.id"
                     :heading="product.heading"
                     :subHeading="product.subHeading"
@@ -29,20 +29,23 @@
         filter:{ default : null }
     },
     setup: async function (props) {
-        const store = useProductStore(),
-        products = ref([]);
-
+        const store = useProductStore();
         store.setFilter(props.filter)
-        
-        const{ data: data } = await useAsyncData('product', () => store.fetchFirst());
-        products.value = data;
-        return{store, products}
+        await useAsyncData('product', () => store.fetchFirst());
+        return{store}
+    },
+    watch:{
+        filter : function (newFilter) {
+            this.store.setFilter(newFilter)
+            this.store.fetchFirst();
+        }        
     },
     computed: { 
         columnTemplates: function () {
             return { 'grid-template-columns': `repeat(${this.columnCount}, minmax(0, 1fr))` };
         },
         hasMorePages: function () {
+
             return (this.store.currentPage < this.store.lastPage );
         },
         hasError:function () {
@@ -59,6 +62,9 @@
                 fIds.push(f.id);
             })
             return fIds;
+        },
+        products: function () {
+            return this.store.rows;
         }
     },
     methods : {

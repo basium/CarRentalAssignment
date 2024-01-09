@@ -1,22 +1,20 @@
 <template>
-    <section class="flex justify-center">
-        <section product-card-grid class="grid" :style="columnTemplates" style="gap:calc(4vw + 10px)">  
-                <ProductCardComponet v-if="products.length>0" v-for="(product,index) in products"
-                    :id="product.id"
-                    :heading="product.heading"
-                    :subHeading="product.subHeading"
-                    :attribute1 = product.attribute1
-                    :attribute2 = product.attribute2
-                    :attribute3 = product.attribute3
-                    :gas = product.gas
-                    :transmission = product.transmission
-                    :people = product.people
-                    :price = product.price
-                    :imageURL= product.imageURL
-                    :isFavorite="favorites.indexOf(product.id)>-1"
-                    @favoriteChanged ="event_favoriteChanged"
-                /> 
-        </section>
+    <section product-card-grid class="grid" :style="columnTemplates" style="column-gap:calc(4vw + 10px); row-gap:2em">  
+            <ProductCardComponet v-if="products.length>0" v-for="(product,index) in products"
+                :id="product.id"
+                :heading="product.heading"
+                :subHeading="product.subHeading"
+                :attribute1 = product.attribute1
+                :attribute2 = product.attribute2
+                :attribute3 = product.attribute3
+                :gas = product.gas
+                :transmission = product.transmission
+                :people = product.people
+                :price = product.price
+                :imageURL= product.imageURL
+                :isFavorite="favorites.indexOf(product.id)>-1"
+                @favoriteChanged ="event_favoriteChanged"
+            /> 
     </section>
 </template>
 <script>
